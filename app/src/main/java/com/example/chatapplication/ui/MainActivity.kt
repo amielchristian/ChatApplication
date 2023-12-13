@@ -1,13 +1,14 @@
-package com.example.chatapplication
+package com.example.chatapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.example.chatapplication.model.User
+import com.example.chatapplication.R
+import com.example.chatapplication.model.ChatUser
+import com.example.chatapplication.ui.login.LoginFragmentDirections
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.name
-import com.example.chatapplication.ui.login.LoginFragmentDirections
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,15 +21,14 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.navHostFragment)
 
-        if (navController.currentDestination?.label.toString().contains("login"))   {
+        if (navController.currentDestination?.label.toString().contains("login")) {
             val currentUser = client.getCurrentUser()
-
-            // don't show Login fragment when user is logged in
-            if (currentUser != null)    {
-                val user = User(currentUser.name, currentUser.id)
+            if (currentUser != null) {
+                val user = ChatUser(currentUser.name, currentUser.id)
                 val action = LoginFragmentDirections.actionLoginFragmentToChannelFragment(user)
                 navController.navigate(action)
             }
         }
+
     }
 }

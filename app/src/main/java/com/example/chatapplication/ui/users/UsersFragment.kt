@@ -1,6 +1,5 @@
 package com.example.chatapplication.ui.users
 
-
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -118,3 +117,16 @@ class UsersFragment : Fragment() {
         _binding = null
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
