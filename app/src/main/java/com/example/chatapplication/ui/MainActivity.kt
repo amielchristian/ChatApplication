@@ -8,7 +8,6 @@ import com.example.chatapplication.R
 import com.example.chatapplication.model.ChatUser
 import com.example.chatapplication.ui.login.LoginFragmentDirections
 import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.client.models.name
 
 class MainActivity : AppCompatActivity() {
 

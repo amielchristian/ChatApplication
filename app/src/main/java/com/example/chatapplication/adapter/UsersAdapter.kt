@@ -55,7 +55,9 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
     private fun createNewChannel(selectedUser: String, holder: MyViewHolder) {
         client.createChannel(
             channelType = "messaging",
-            members = listOf(client.getCurrentUser()!!.id, selectedUser)
+            channelId = "",
+            memberIds = listOf(client.getCurrentUser()!!.id, selectedUser),
+            extraData = mapOf("Custom value" to "value")
         ).enqueue { result ->
             if (result.isSuccess) {
                 navigateToChatFragment(holder, result.data().cid)

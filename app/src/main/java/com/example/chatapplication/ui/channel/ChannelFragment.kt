@@ -20,8 +20,6 @@ import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.Channel
 import io.getstream.chat.android.client.models.Filters
 import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.client.models.name
-import io.getstream.chat.android.livedata.ChatDomain
 import io.getstream.chat.android.ui.avatar.AvatarView
 import io.getstream.chat.android.ui.channel.list.header.viewmodel.ChannelListHeaderViewModel
 import io.getstream.chat.android.ui.channel.list.header.viewmodel.bindView
@@ -138,7 +136,7 @@ class ChannelFragment : Fragment() {
     }
 
     private fun deleteChannel(channel: Channel) {
-        ChatDomain.instance().deleteChannel(channel.cid).enqueue { result ->
+        ChatClient.instance().deleteChannel(channel.type, channel.cid).enqueue { result ->
             if (result.isSuccess) {
                 showToast("Channel: ${channel.name} removed!")
             } else {
